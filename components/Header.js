@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Header = () => {
-  return (
-    <HeaderWrapper>
-      <CenterWrapper>헤덩</CenterWrapper>
-    </HeaderWrapper>
-  );
-};
-
+    return (
+      <HeaderWrapper>
+        <CenterWrapper>헤덩</CenterWrapper>
+      </HeaderWrapper>
+    );
+  };
+  
 const HeaderWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -22,3 +22,5 @@ const CenterWrapper = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+

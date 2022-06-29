@@ -3,6 +3,7 @@ import Head from 'next/head';
 import React from 'react';
 import { Header } from '../components/Header';
 import '../styles/globals.css';
+
 const styles = {
     layout: {
         display: 'flex',
