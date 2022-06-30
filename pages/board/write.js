@@ -5,8 +5,7 @@ const index = () => {
   return (
     <BodyWrapper>
         <CenterWrapper>
-            <LeftWrapper>ctgr</LeftWrapper>
-            <RightWrapper>list</RightWrapper>
+            수정
         </CenterWrapper>
     </BodyWrapper>
   );
@@ -32,27 +31,7 @@ const CenterWrapper = styled.div`
 
     //모바일
     @media screen and (max-width: 499px) {
-        width:100vw;
-    }
-    //데스크탑
-    @media screen and (max-width: 1199px) {
-        justify-content: flex-start;
+        width:375px;
     }
 `;
-
-const LeftWrapper = styled.div`
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-
-    //모바일
-    @media screen and (max-width: 499px) {
-        display: none;
-    }
-`;
-const RightWrapper = styled.div`
-    width: 1000px;
-`;
-
 
