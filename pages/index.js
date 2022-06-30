@@ -1,58 +1,67 @@
 import React from "react";
 import styled from "styled-components";
+import { CtgrList } from '../components/CtgrList';
+import { PostList } from '../components/PostList';
 
 const index = () => {
   return (
     <BodyWrapper>
-        <CenterWrapper>
-            <LeftWrapper>ctgr</LeftWrapper>
-            <RightWrapper>list</RightWrapper>
-        </CenterWrapper>
+        <LeftWrapper>
+            <CtgrList></CtgrList>
+        </LeftWrapper>
+
+      <CenterWrapper>
+        <RightWrapper>
+            <PostList></PostList>
+        </RightWrapper>
+      </CenterWrapper>
     </BodyWrapper>
   );
 };
 export default index;
 
 const BodyWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top:80px;
-`;
-
-const CenterWrapper = styled.div`
-    /* width:100%; */
-    width: 1200px;
-    height: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: row;
-
-    //모바일
-    @media screen and (max-width: 499px) {
-        width:100vw;
-    }
+  display: flex;
+  top: 80px;
     //데스크탑
     @media screen and (max-width: 1199px) {
         justify-content: flex-start;
     }
+        //데스크탑
+    @media screen and (min-width: 1200px) {
+        justify-content: center;
+    }
+`;
+
+const CenterWrapper = styled.div`
+  /* width:100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: row;
+
+  //모바일
+  @media screen and (max-width: 499px) {
+    width: 100vw;
+  }
+  //데스크탑
+  @media screen and (max-width: 1199px) {
+    justify-content: flex-start;
+  }
 `;
 
 const LeftWrapper = styled.div`
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-
+    padding-top: 40px;
     //모바일
     @media screen and (max-width: 499px) {
         display: none;
     }
+
 `;
+
 const RightWrapper = styled.div`
-    width: 1000px;
+    padding-top: 20px;
+  display: flex;
+  justify-content: center;
 `;
-
-
