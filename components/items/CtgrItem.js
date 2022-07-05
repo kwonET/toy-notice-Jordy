@@ -1,14 +1,17 @@
 import { Router, useRouter } from "next/router";
 import styled from "styled-components";
-import { categoryDummyDate } from "../../util/dummy.js";
 
-export const CtgrItm = () => {
+export const CtgrItm = ({ categoryDummyDate }) => {
   return (
       <CtgrWrapper>
-        <CtgrTextWrapper> {categoryDummyDate} </CtgrTextWrapper>
+        <CtgrTextWrapper> 
+          {categoryDummyDate}
+        </CtgrTextWrapper>
       </CtgrWrapper>
   );
 };
+
+
 const CtgrWrapper = styled.div`
   /* Auto layout */
 /* Auto layout */
