@@ -6,10 +6,10 @@ import Image from "next/image";
 export const PostItm = ({title, content, regDate}) => {
   const [dateVisible, setDateVisible] = useState(null); // 실제로 보이게 될 가공된 날짜 문자열
 
-  useEffect(()=>{
-    document.dateVisible=regDate;
-    // regDate -> dateVisible로 보여주고싶은 형태로 날짜를 가공
-  }, [regDate]);
+  // useEffect(()=>{
+  //   document.dateVisible=regDate;
+  //   // regDate -> dateVisible로 보여주고싶은 형태로 날짜를 가공
+  // }, [regDate]);
 
   return (
     <PostWrapper>
@@ -20,7 +20,9 @@ export const PostItm = ({title, content, regDate}) => {
       <PostContentsWrapper>
         <PostTitleWrapper> {title} </PostTitleWrapper>
         <PostTextWrapper> {content} </PostTextWrapper>
-        <PostDateWrapper> {document.dateVisible} </PostDateWrapper>
+        <PostTextWrapper> {regDate} </PostTextWrapper>
+
+        {/* <PostDateWrapper> {document.dateVisible} </PostDateWrapper> */}
       </PostContentsWrapper>
     </PostWrapper>
   );
