@@ -1,3 +1,4 @@
+ 
 export const dummyData = [
   {
     title: "제목입니다",

@@ -1,9 +1,12 @@
 import { PostItm } from "./items/PostItem";
 import styled from "styled-components";
 import { dummyData } from "../util/dummy.js";
+import { postData } from "../util/postman.js";
+
 import { useEffect, useState } from "react";
 
 export const PostList = () => {
+  console.log(postData);
   const items = dummyData;
   const [renderList, setRenderList] = useState(null);
 
