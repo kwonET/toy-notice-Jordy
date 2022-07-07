@@ -1,16 +1,7 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
 
-const postData =()=>{
-  useEffect(() => {
-    
-    axios
-      .get("http://124.197.210.234:8188/bulletin/list")
-      .then((result) => {
-          return result;
-        //console.log(result.data.list);
-      })
-      .catch(() => {});
-  }, []);
-}
-export default postData;
+const postData = async () => {
+  const res = await axios.get("http://124.197.210.234:8188/bulletin/list?numPerPage=7")
+    return res;
+};
+export { postData };
