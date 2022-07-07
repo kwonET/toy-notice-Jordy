@@ -4,9 +4,11 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <CenterWrapper>헤더</CenterWrapper>
+      <ThreeBar></ThreeBar>
     </HeaderWrapper>
   );
 };
+const ThreeBar=styled.div``;
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -31,21 +33,26 @@ const CenterWrapper = styled.div`
   //모바일
   @media screen and (max-width: 499px) {
     width: 100vw;
-    background-color: aliceblue;
+    height: 40px;
+    background-color: #b8ebcd;
+    justify-content: center;
+
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
   }
   //데스크탑
   @media screen and (min-width: 500px) {
-    background-color: #c5ffa1;
+    background-color: #b8ebcd;
     justify-content: center;
   }
 
-  //데스크탑
+  /* //데스크탑
   @media screen and (min-width: 1199px) {
-    background-color: #c5ffa1;
+    background-color: #b8ebcd;
     justify-content: center;
   }
   @media screen and (max-width: 1200px) {
-    background-color: #c5ffa1;
+    background-color: #b8ebcd;
     justify-content: center;
-  }
+  } */
 `;

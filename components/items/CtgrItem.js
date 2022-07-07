@@ -2,10 +2,13 @@ import { Router, useRouter } from "next/router";
 import styled from "styled-components";
 
 export const CtgrItm = ({ categoryDummyDate }) => {
+  // console.log(categoryDummyDate);
   return (
       <CtgrWrapper>
         <CtgrTextWrapper> 
-          {categoryDummyDate}
+         {/* {categoryDummyDate} */
+          categoryDummyDate.id
+         }
         </CtgrTextWrapper>
       </CtgrWrapper>
   );

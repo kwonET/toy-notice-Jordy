@@ -1,4 +1,5 @@
- 
+export const PaginationNum=['<<','<','1','>','>>'];
+
 export const dummyData = [
   {
     title: "제목입니다",

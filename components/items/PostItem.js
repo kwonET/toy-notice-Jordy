@@ -3,54 +3,86 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
-export const PostItm = ({title, content, regDate}) => {
+export const PostItm = ({ thumb, title, content, regDate }) => {
   const [dateVisible, setDateVisible] = useState(null); // 실제로 보이게 될 가공된 날짜 문자열
+  useEffect(() => {
+    // regDate -> dateVisible로 보여주고싶은 형태로 날짜를 가공
+    //"2022-06-30T04:33:54.000Z"
+    const newData = new Date(regDate);
+    let tempDate =
+      `${newData.getFullYear()}` +
+      `년 ` +
+      `${newData.getMonth()}` +
+      `월 ` +
+      `${newData.getDay()}` +
+      `일 `;
 
-  // useEffect(()=>{
-  //   document.dateVisible=regDate;
-  //   // regDate -> dateVisible로 보여주고싶은 형태로 날짜를 가공
-  // }, [regDate]);
-
+    setDateVisible(tempDate);
+  }, [regDate]);
+  
   return (
     <PostWrapper>
       <ImgWrapper>
-        <Image src="/image.png" width={160} height={160} />
+        <img src={`${thumb}`} style={{
+          width: '150px',
+          height:'150px',
+          objectFit:'contain'
+        }}/>
+        {/* <Image src={thumb} layout="fill" objectFit="cover" /> */}
       </ImgWrapper>
 
       <PostContentsWrapper>
         <PostTitleWrapper> {title} </PostTitleWrapper>
         <PostTextWrapper> {content} </PostTextWrapper>
-        <PostTextWrapper> {regDate} </PostTextWrapper>
+        <PostDateWrapper> {dateVisible} </PostDateWrapper>
 
         {/* <PostDateWrapper> {document.dateVisible} </PostDateWrapper> */}
       </PostContentsWrapper>
     </PostWrapper>
   );
 };
-const ImgWrapper = styled.div`
-  border: 1px solid #000000;
-`;
 
 const PostWrapper = styled.div`
   box-sizing: border-box;
-
   /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 10px;
 
-  width: 446px;
-  height: 201px;
+  //모바일
+  @media screen and (max-width: 499px) {
+    width: 335px;
+    height: 110px;
+    align-self: stretch;
+  }
+  //데스크탑
+  @media screen and (min-width: 500px) {
+    width: 446px;
+    height: 201px;
+  }
 
   border: 1px solid #000000;
 
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
+`;
+
+const ImgWrapper = styled.div`
+  //모바일
+  @media screen and (max-width: 499px) {
+    width: 80px;
+    height: 80px;
+  }
+  //데스크탑
+  @media screen and (min-width: 500px) {
+    width: 160px;
+    height: 160px;
+
+    border: 1px solid #000000;
+  }
 `;
 
 const PostContentsWrapper = styled.div`
@@ -59,17 +91,26 @@ const PostContentsWrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding: 10px;
-  gap: 20px;
 
-  width: 100px;
-  height: 141px;
+  //모바일
+  @media screen and (max-width: 499px) {
+    gap: 10px;
+    width: 100px;
+    height: 90px;
+  }
+  //데스크탑
+  @media screen and (min-width: 500px) {
+    gap: 20px;
+    width: 200px;
+    height: 141px;
+  }
+
   /* Inside auto layout */
 
   flex: none;
   order: 1;
   flex-grow: 0;
 `;
-
 const PostTitleWrapper = styled.div`
   height: 15px;
 
@@ -79,6 +120,7 @@ const PostTitleWrapper = styled.div`
   font-size: 12px;
   line-height: 15px;
   /* identical to box height */
+  text-align: left;
 
   color: #000000;
 
@@ -90,8 +132,14 @@ const PostTitleWrapper = styled.div`
 `;
 
 const PostTextWrapper = styled.div`
-  height: 51px;
-
+  //모바일
+  @media screen and (max-width: 499px) {
+    height: 30px;
+  }
+  //데스크탑
+  @media screen and (min-width: 500px) {
+    height: 51px;
+  }
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -109,14 +157,13 @@ const PostTextWrapper = styled.div`
 
 const PostDateWrapper = styled.div`
   height: 15px;
-
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
   /* identical to box height */
-
+  text-align: left;
   color: #000000;
 
   /* Inside auto layout */
