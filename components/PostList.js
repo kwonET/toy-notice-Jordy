@@ -11,26 +11,38 @@ export const PostList = ({ postData }) => {
   useEffect(() => {
     let tempRender = [];
     for (let i = 0; i < items.length; i++) {
-      if (i != 0 && i % 2 === 0) {
+      if (i % 2 === 0 && i + 1 < items.length) {
         //i가 0이 아닌 2의 배수 - 2,4,6,8
         tempRender.push(
           <PostListWrapper>
             <PostItm
-              thumb={items[i - 2].thumbUrl}
-              title={items[i - 2].title}
-              content={items[i - 2].content}
-              regDate={items[i - 2].regDate}
+              thumb={items[i].thumbUrl}
+              title={items[i].title}
+              content={items[i].content}
+              regDate={items[i].regDate}
             />
             <PostItm
-              thumb={items[i - 2].thumbUrl}
-              title={items[i - 1].title}
-              content={items[i - 1].content}
-              regDate={items[i - 1].regDate}
+              thumb={items[i + 1].thumbUrl}
+              title={items[i + 1].title}
+              content={items[i + 1].content}
+              regDate={items[i + 1].regDate}
+            />
+          </PostListWrapper>
+        );
+      } else if (i < 5 && i == items.length - 1) {
+        tempRender.push(
+          <PostListWrapper>
+            <PostItm
+              thumb={items[i].thumbUrl}
+              title={items[i].title}
+              content={items[i].content}
+              regDate={items[i].regDate}
             />
           </PostListWrapper>
         );
       }
     }
+
     setRenderList(tempRender);
   }, [items]);
 

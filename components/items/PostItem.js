@@ -74,9 +74,16 @@ const ImgWrapper = styled.div`
     border: 1px solid #000000;
   }
   & > img {
+
+    object-fit: contain;
+    @media screen and (max-width: 499px) {
+      width:80px;
+      height:80px;
+    }
+    @media screen and (min-width: 500px) {
     width: 150px;
     height: 150px;
-    object-fit: contain;
+    }
   }
 `;
 
@@ -95,7 +102,7 @@ const PostContentsWrapper = styled.div`
   }
   //데스크탑
   @media screen and (min-width: 500px) {
-    gap: 20px;
+    gap: 15px;
     width: 200px;
     height: 141px;
   }
@@ -133,8 +140,18 @@ const PostTextWrapper = styled.div`
   }
   //데스크탑
   @media screen and (min-width: 500px) {
-    height: 51px;
+    height: 90px;
   }
+  width:230px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+
+  text-align: left;
+
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -144,7 +161,6 @@ const PostTextWrapper = styled.div`
   color: #000000;
 
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   flex-grow: 0;

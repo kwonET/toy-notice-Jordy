@@ -7,21 +7,22 @@ import { BtnItem } from "../components/items/BtnItem";
 import { useEffect } from "react";
 import { postData } from "../util/postman";
 
-const index = () => {
+const index = ({pageProps}) => {  
+  const {id}= pageProps;
+
   const [renderData, setRenderData] = useState([]);
   const [page,setPage]=useState([]);
-
   useEffect(() => {
-    let tempRender,tempPage;
+    let tempRender;
 
     const temp = async () => {
-      tempRender = await postData();
-      tempPage=await postData();
+      tempRender = await postData(id); //현재페이지를 전달
+      // tempPage=await postData(id);
       setRenderData(tempRender.data.list);
-      setPage(tempPage.data.pagination);
+      setPage(tempRender.data.pagination);
     };
     temp();
-  },[]); //렌더링 끝난 시점에서 한번만 실행
+  },[id]); //렌더링 끝난 시점에서 한번만 실행
 
   return (
     <BodyWrapper>
@@ -46,6 +47,12 @@ const index = () => {
     </BodyWrapper>
   );
 };
+
+index.getInitialProps = (context) => { //SSR
+  const {curPage} = context.query;
+  return { id: curPage };
+};
+
 export default index;
 
 const BodyWrapper = styled.div`

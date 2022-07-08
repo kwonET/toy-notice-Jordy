@@ -3,13 +3,19 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 
 export const PageItem = ({ pageNum }) => {
+  //pagination
+  const router = useRouter();
+  function onClickMoveTo(page) {
+    router.push(`/post?curPage=${page}`);
+  }
+
   const items = pageNum;
   const [renderList, setRenderList] = useState(null);
   useEffect(() => {
     let tempRender = [];
-    for (let i = 1; i < pageNum+1; i++) {
+    for (let i = 1; i < pageNum + 1; i++) {
       tempRender.push(
-        <PageWrapper>
+        <PageWrapper onClick={() => onClickMoveTo(i)}>
           <PageTextWrapper>{i}</PageTextWrapper>
         </PageWrapper>
       );
@@ -19,12 +25,24 @@ export const PageItem = ({ pageNum }) => {
 
   return <TempWrapper>{renderList}</TempWrapper>;
 };
-const TempWrapper=styled.div`
+
+
+
+const TempWrapper = styled.div`
   display: flex;
+  gap: 10px;
 `;
-const PageWrapper = styled.div`
+
+const PageWrapper = styled.button`
   /* Auto layout */
-  /* Auto layout */
+  //버튼 초기화
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;

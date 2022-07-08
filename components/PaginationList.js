@@ -9,7 +9,6 @@ export const PaginationList = ({postData}) => {
   //     return <CtgrItm text={text}/>
   // });
   // const items = [<CtgrItm text={normal}/>, <CtgrItm text={usual}/>, <CtgrItm text={unusal}/>];
-  console.log(postData.totalPage);
   return (
     <PaginationListWrapper>
         <PageItem pageNum={postData.totalPage} />
