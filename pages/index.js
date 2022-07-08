@@ -9,13 +9,16 @@ import { postData } from "../util/postman";
 
 const index = () => {
   const [renderData, setRenderData] = useState([]);
+  const [page,setPage]=useState([]);
 
   useEffect(() => {
-    let tempRender;
+    let tempRender,tempPage;
+
     const temp = async () => {
       tempRender = await postData();
-
+      tempPage=await postData();
       setRenderData(tempRender.data.list);
+      setPage(tempPage.data.pagination);
     };
     temp();
   },[]); //렌더링 끝난 시점에서 한번만 실행
@@ -33,7 +36,7 @@ const index = () => {
 
         <RightWrapper>
           <PaginationWrapper>
-            <PaginationList></PaginationList>
+            <PaginationList postData={page}/>
           </PaginationWrapper>
           <PaginationWrapper>
             <BtnItem BtnName={"작성하기"} />

@@ -1,24 +1,21 @@
 import { PageItem } from "./items/PaginationItem";
 import styled from "styled-components";
 import { PaginationNum } from "../util/dummy.js";
+import { useEffect, useState } from "react";
 
-export const PaginationList = () => {
+export const PaginationList = ({postData}) => {
   // const itemTexts = ["normal", "usual", "unusal"];
   // const items = itemTexts.map((text) => {
   //     return <CtgrItm text={text}/>
   // });
   // const items = [<CtgrItm text={normal}/>, <CtgrItm text={usual}/>, <CtgrItm text={unusal}/>];
- 
-  const items = PaginationNum;
+  console.log(postData.totalPage);
   return (
     <PaginationListWrapper>
-      {items.map((pageNum) => {
-        return <PageItem pageNum={pageNum} />;
-      })}
+        <PageItem pageNum={postData.totalPage} />
     </PaginationListWrapper>
   );
 };
-
 const PaginationListWrapper = styled.div`
   /* Auto layout */
   /* Auto layout */

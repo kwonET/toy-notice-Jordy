@@ -9,25 +9,15 @@ export const PostItm = ({ thumb, title, content, regDate }) => {
     // regDate -> dateVisible로 보여주고싶은 형태로 날짜를 가공
     //"2022-06-30T04:33:54.000Z"
     const newData = new Date(regDate);
-    let tempDate =
-      `${newData.getFullYear()}` +
-      `년 ` +
-      `${newData.getMonth()}` +
-      `월 ` +
-      `${newData.getDay()}` +
-      `일 `;
+    let tempDate = `${newData.getFullYear()}년${newData.getMonth()}월${newData.getDay()}일`;
 
     setDateVisible(tempDate);
   }, [regDate]);
-  
+
   return (
     <PostWrapper>
       <ImgWrapper>
-        <img src={`${thumb}`} style={{
-          width: '150px',
-          height:'150px',
-          objectFit:'contain'
-        }}/>
+        <img src={`${thumb}`} />
         {/* <Image src={thumb} layout="fill" objectFit="cover" /> */}
       </ImgWrapper>
 
@@ -82,6 +72,11 @@ const ImgWrapper = styled.div`
     height: 160px;
 
     border: 1px solid #000000;
+  }
+  & > img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
   }
 `;
 

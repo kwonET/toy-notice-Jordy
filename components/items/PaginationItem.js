@@ -1,14 +1,27 @@
 import { Router, useRouter } from "next/router";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 
 export const PageItem = ({ pageNum }) => {
-  return (
-    <PageWrapper>
-      <PageTextWrapper>{pageNum}</PageTextWrapper>
-    </PageWrapper>
-  );
-};
+  const items = pageNum;
+  const [renderList, setRenderList] = useState(null);
+  useEffect(() => {
+    let tempRender = [];
+    for (let i = 1; i < pageNum+1; i++) {
+      tempRender.push(
+        <PageWrapper>
+          <PageTextWrapper>{i}</PageTextWrapper>
+        </PageWrapper>
+      );
+    }
+    setRenderList(tempRender);
+  }, [items]);
 
+  return <TempWrapper>{renderList}</TempWrapper>;
+};
+const TempWrapper=styled.div`
+  display: flex;
+`;
 const PageWrapper = styled.div`
   /* Auto layout */
   /* Auto layout */
