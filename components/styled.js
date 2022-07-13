@@ -10,7 +10,7 @@ const BodyWrapper = styled.div`
 const CenterWrapper = styled.div`
     /* width:100%; */
     width: 1200px;
-    height: 1000px;
+    /* height: 1000px; */
     display: flex;
     justify-content: center;
     align-items: center;
