@@ -1,9 +1,23 @@
 import { Router, useRouter } from "next/router";
 import styled from "styled-components";
+import { dummyData } from "../../util/dummy";
 
-export const BtnItem = ({ BtnName }) => {
+export const BtnItem = ({ BtnName, WriteData }) => {
+  //pagination
+  const router = useRouter();
+  function onClickMoveTo(page) {
+    if (page == "작성하기") router.push(`board/write`);
+    if (page == "등록하기") router.push(`../post`);
+  }
+  function onClickData() {
+    const date = new Date();
+    date = date.toLocaleDateString("ko-kr");
+    WriteData.regDate = date;
+    dummyData.push(WriteData);
+    console.log(dummyData);
+  }
   return (
-    <BtnWrapper>
+    <BtnWrapper onClick={(() => onClickMoveTo(BtnName), () => onClickData())}>
       <BtnTextWrapper>{BtnName}</BtnTextWrapper>
     </BtnWrapper>
   );
@@ -11,7 +25,15 @@ export const BtnItem = ({ BtnName }) => {
 
 const BtnWrapper = styled.div`
   box-sizing: border-box;
-
+  /* Auto layout */
+  //버튼 초기화
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
   /* Auto layout */
 
   display: flex;

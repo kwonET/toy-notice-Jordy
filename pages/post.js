@@ -6,6 +6,7 @@ import { PaginationList } from "../components/PaginationList";
 import { BtnItem } from "../components/items/BtnItem";
 import { useEffect } from "react";
 import { postData } from "../util/postman";
+import { dummyData } from "../util/dummy";
 
 const index = ({pageProps}) => {  
   const {id}= pageProps;
@@ -16,13 +17,16 @@ const index = ({pageProps}) => {
     let tempRender;
 
     const temp = async () => {
-      tempRender = await postData(id); //현재페이지를 전달
+      // tempRender = await postData(id); //현재페이지를 전달
+      
       // tempPage=await postData(id);
-      setRenderData(tempRender.data.list);
-      setPage(tempRender.data.pagination);
+      // setRenderData(tempRender.data.list);
+      setRenderData(dummyData);
+      // setPage(tempRender.data.pagination);
+      // return new Promise();
     };
     temp();
-  },[id]); //렌더링 끝난 시점에서 한번만 실행
+  },[id]); //아무것도 안 넣으면 ! 렌더링 끝난 시점에서 한번만 실행
 
   return (
     <BodyWrapper>
@@ -36,9 +40,9 @@ const index = ({pageProps}) => {
         </RightWrapper>
 
         <RightWrapper>
-          <PaginationWrapper>
+          {/* <PaginationWrapper>
             <PaginationList postData={page}/>
-          </PaginationWrapper>
+          </PaginationWrapper> */}
           <PaginationWrapper>
             <BtnItem BtnName={"작성하기"} />
           </PaginationWrapper>
