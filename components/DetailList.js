@@ -6,7 +6,6 @@ export const DetailList = ({ detailData }) => {
   const [keyData, setKeyData] = useState(null);
   const [valData, setValData] = useState(null);
   const [renderList, setRenderList] = useState(null);
-
   useEffect(() => {
     let tempKeyData = [];
     let tempValData = [];

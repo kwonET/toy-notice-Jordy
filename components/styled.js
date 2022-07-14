@@ -23,4 +23,24 @@ const CenterWrapper = styled.div`
     }
 `;
 
+// const BorderWrapper = styled.div<{width?:number}>`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   padding: 40px;
+
+//   width: ${({width})=>width??1080}px;
+//   height: 559px;
+
+//   background: #ffffff;
+//   border: 1px solid #000000;
+
+//   /* Inside auto layout */
+
+//   flex: none;
+//   order: 0;
+//   align-self: stretch;
+//   flex-grow: 1;
+// `;
+// 
 export {BodyWrapper,CenterWrapper};

@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 export const PageItem = ({ pageNum }) => {
   //pagination
   const router = useRouter();
-  function onClickMoveTo(page) {
+  const onClickMoveTo = (page) => {
     router.push(`/post?curPage=${page}`);
-  }
+  };
 
   const items = pageNum;
   const [renderList, setRenderList] = useState(null);
@@ -25,8 +25,6 @@ export const PageItem = ({ pageNum }) => {
 
   return <TempWrapper>{renderList}</TempWrapper>;
 };
-
-
 
 const TempWrapper = styled.div`
   display: flex;

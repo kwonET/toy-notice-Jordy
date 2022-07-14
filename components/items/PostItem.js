@@ -3,8 +3,14 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
-export const PostItm = ({ thumb, title, content, regDate }) => {
+export const PostItm = ({ id,thumb, title, content, regDate }) => {
   const [dateVisible, setDateVisible] = useState(null); // 실제로 보이게 될 가공된 날짜 문자열
+  const router = useRouter();
+
+  const onClickMoveTo=(id)=> {
+    router.push(`/board/detail?id=${id}`);
+  }
+
   useEffect(() => {
     // regDate -> dateVisible로 보여주고싶은 형태로 날짜를 가공
     //"2022-06-30T04:33:54.000Z"
@@ -15,7 +21,7 @@ export const PostItm = ({ thumb, title, content, regDate }) => {
   }, [regDate]);
 
   return (
-    <PostWrapper>
+    <PostWrapper onClick={()=>onClickMoveTo(id)}>
       <ImgWrapper>
         <img src={`${thumb}`} />
         {/* <Image src={thumb} layout="fill" objectFit="cover" /> */}
@@ -33,6 +39,15 @@ export const PostItm = ({ thumb, title, content, regDate }) => {
 };
 
 const PostWrapper = styled.div`
+  //버튼 초기화
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+
   box-sizing: border-box;
   /* Auto layout */
   display: flex;

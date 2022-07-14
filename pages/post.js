@@ -7,8 +7,14 @@ import { BtnItem } from "../components/items/BtnItem";
 import { useEffect } from "react";
 import { postData } from "../util/postman";
 import { dummyData } from "../util/dummy";
+import { useRecoilState } from "recoil";
+import { countAtom } from "../components/Header";
 
 const index = ({pageProps}) => {  
+  const [count, setCount]=useRecoilState(countAtom);
+  const increaseCount=()=>{
+    setCount(count+1);
+  }
   const {id}= pageProps;
 
   const [renderData, setRenderData] = useState([]);
@@ -17,12 +23,12 @@ const index = ({pageProps}) => {
     let tempRender;
 
     const temp = async () => {
-      // tempRender = await postData(id); //현재페이지를 전달
-      
+      tempRender = await postData(id); //현재페이지를 전달
+      increaseCount();
       // tempPage=await postData(id);
-      // setRenderData(tempRender.data.list);
-      setRenderData(dummyData);
-      // setPage(tempRender.data.pagination);
+      setRenderData(tempRender.data.list);
+      // setRenderData(dummyData);
+      setPage(tempRender.data.pagination);
       // return new Promise();
     };
     temp();
@@ -40,9 +46,9 @@ const index = ({pageProps}) => {
         </RightWrapper>
 
         <RightWrapper>
-          {/* <PaginationWrapper>
+          <PaginationWrapper>
             <PaginationList postData={page}/>
-          </PaginationWrapper> */}
+          </PaginationWrapper>
           <PaginationWrapper>
             <BtnItem BtnName={"작성하기"} />
           </PaginationWrapper>

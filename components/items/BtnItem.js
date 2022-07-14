@@ -1,23 +1,36 @@
 import { Router, useRouter } from "next/router";
 import styled from "styled-components";
 import { dummyData } from "../../util/dummy";
+import { wrtData } from "../../util/postman";
 
 export const BtnItem = ({ BtnName, WriteData }) => {
   //pagination
-  const router = useRouter();
-  function onClickMoveTo(page) {
-    if (page == "작성하기") router.push(`board/write`);
-    if (page == "등록하기") router.push(`../post`);
-  }
-  function onClickData() {
+  const { push } = useRouter();
+  const onClickData = () => {
     const date = new Date();
     date = date.toLocaleDateString("ko-kr");
     WriteData.regDate = date;
-    dummyData.push(WriteData);
-    console.log(dummyData);
-  }
+    wrtData.push(WriteData);
+    console.log(wrtData);
+  };
+  const onClickMoveTo = (page) => {
+    if (page == "작성하기") push(`../board/write`);
+    if (page == "등록하기") {
+      const temp = async () => {
+        await wrtData(WriteData);
+      };
+      temp();
+      push(`../post`);
+      // onClickData();
+    }
+    if(page=="수정하기"){
+
+    }
+  };
+
   return (
-    <BtnWrapper onClick={(() => onClickMoveTo(BtnName), () => onClickData())}>
+    <BtnWrapper onClick={() => onClickMoveTo(BtnName)}>
+      {/* // <BtnWrapper onClick={(() => onClickMoveTo(BtnName), () => onClickData())}> */}
       <BtnTextWrapper>{BtnName}</BtnTextWrapper>
     </BtnWrapper>
   );
