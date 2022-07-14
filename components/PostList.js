@@ -4,8 +4,11 @@ import { dummyData } from "../util/dummy.js";
 import { postData } from "../util/postman.js";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export const PostList = ({ postData }) => {
+  const router = useRouter();
+
   const items = postData;
   const [renderList, setRenderList] = useState(null);
   useEffect(() => {
@@ -13,15 +16,18 @@ export const PostList = ({ postData }) => {
     for (let i = 0; i < items.length; i++) {
       if (i % 2 === 0 && i + 1 < items.length) {
         //i가 0이 아닌 2의 배수 - 2,4,6,8
+        // console.log('items:',items[i]);
         tempRender.push(
           <PostListWrapper>
             <PostItm
+              id={items[i].id}
               thumb={items[i].thumbUrl}
               title={items[i].title}
               content={items[i].content}
               regDate={items[i].regDate}
             />
             <PostItm
+              id={items[i+1].id}
               thumb={items[i + 1].thumbUrl}
               title={items[i + 1].title}
               content={items[i + 1].content}
@@ -33,6 +39,7 @@ export const PostList = ({ postData }) => {
         tempRender.push(
           <PostListWrapper>
             <PostItm
+              id={items[i].id}
               thumb={items[i].thumbUrl}
               title={items[i].title}
               content={items[i].content}
@@ -50,7 +57,6 @@ export const PostList = ({ postData }) => {
 };
 
 const PostSixWrapper = styled.div``;
-
 const PostListWrapper = styled.div`
   //모바일
   @media screen and (max-width: 499px) {

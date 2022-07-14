@@ -4,10 +4,17 @@ import { BodyWrapper, CenterWrapper } from "../../components/styled";
 import { WriteList } from "../../components/WriteList";
 import { dummyData } from "../../util/dummy";
 import { BtnItem } from "../../components/items/BtnItem";
+import { useRecoilState } from "recoil";
+import { countAtom } from "../../components/Header";
 
 const write = () => {
+  const [count, setCount]=useRecoilState(countAtom);
+  const increaseCount=()=>{
+    setCount(count+1);
+  }
   const [transValue, setTransValue]=useState();
   useEffect(()=>{
+    increaseCount();
     // console.log(transValue); //값 확인용 useEffect
   },[transValue]);
   return (

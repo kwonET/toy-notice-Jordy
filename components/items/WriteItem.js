@@ -5,7 +5,7 @@ export const WriteItem = ({regData}) => {
   const [renderList, setRenderList] = useState(null);
   const [inputValue, setInputValue] = useState("");
 
-  let nameList = ["title", "content", "nickName", "password"];
+  let nameList = ["title", "content", "nickname", "password"];
   useEffect(() => {
     let tempRender = [];
     for (let i = 0; i < nameList.length; i++) {
