@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { CtgrList } from "../components/CtgrList";
 import { PostList } from "../components/PostList";
@@ -6,15 +6,8 @@ import { PaginationList } from "../components/PaginationList";
 import { BtnItem } from "../components/items/BtnItem";
 import { useEffect } from "react";
 import { postData } from "../util/postman";
-import { dummyData } from "../util/dummy";
-import { useRecoilState } from "recoil";
-import { countAtom } from "../components/Header";
 
-const index = ({pageProps}) => {  
-  const [count, setCount]=useRecoilState(countAtom);
-  const increaseCount=()=>{
-    setCount(count+1);
-  }
+const post = ({pageProps}) => {  
   const {id}= pageProps;
 
   const [renderData, setRenderData] = useState([]);
@@ -24,7 +17,7 @@ const index = ({pageProps}) => {
 
     const temp = async () => {
       tempRender = await postData(id); //현재페이지를 전달
-      increaseCount();
+
       // tempPage=await postData(id);
       setRenderData(tempRender.data.list);
       // setRenderData(dummyData);
@@ -50,7 +43,7 @@ const index = ({pageProps}) => {
             <PaginationList postData={page}/>
           </PaginationWrapper>
           <PaginationWrapper>
-            <BtnItem BtnName={"작성하기"} />
+            <BtnItem isPwd={false} BtnName={"작성하기"} />
           </PaginationWrapper>
         </RightWrapper>
       </CenterWrapper>
@@ -58,12 +51,12 @@ const index = ({pageProps}) => {
   );
 };
 
-index.getInitialProps = (context) => { //SSR
+post.getInitialProps = (context) => { //SSR
   const {curPage} = context.query;
   return { id: curPage };
 };
 
-export default index;
+export default post;
 
 const BodyWrapper = styled.div`
   display: flex;

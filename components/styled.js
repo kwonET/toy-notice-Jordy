@@ -5,6 +5,7 @@ const BodyWrapper = styled.div`
     justify-content: center;
     align-items: center;
     top:80px;
+
 `;
 
 const CenterWrapper = styled.div`
@@ -22,7 +23,6 @@ const CenterWrapper = styled.div`
         width:375px;
     }
 `;
-
 // const BorderWrapper = styled.div<{width?:number}>`
 //   display: flex;
 //   flex-direction: column;

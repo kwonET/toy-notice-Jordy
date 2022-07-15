@@ -2,27 +2,24 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BodyWrapper, CenterWrapper } from "../../components/styled";
 import { WriteList } from "../../components/WriteList";
-import { dummyData } from "../../util/dummy";
 import { BtnItem } from "../../components/items/BtnItem";
 import { useRecoilState } from "recoil";
-import { countAtom } from "../../components/Header";
+import { displayAtom } from "../../components/items/Modal";
 
 const write = () => {
-  const [count, setCount]=useRecoilState(countAtom);
-  const increaseCount=()=>{
-    setCount(count+1);
-  }
-  const [transValue, setTransValue]=useState();
-  useEffect(()=>{
-    increaseCount();
-    // console.log(transValue); //값 확인용 useEffect
-  },[transValue]);
+  const [transValue, setTransValue] = useState();
+
+  const [displayFlag, setDisplayFlag] = useRecoilState(displayAtom);
+  const showModal = () => {
+    setDisplayFlag(true);
+  };
+
   return (
     <BodyWrapper>
       <CenterWrapper>
         <WriteWrapper>
           <WriteList regData={setTransValue}></WriteList>
-          <BtnItem BtnName={"등록하기"} WriteData={transValue} />
+          <BtnItem isPwd={false} BtnName={"등록하기"} WriteData={transValue} />
         </WriteWrapper>
       </CenterWrapper>
     </BodyWrapper>

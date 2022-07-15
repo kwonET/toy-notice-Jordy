@@ -4,7 +4,7 @@ import React from "react";
 import { Header } from "../components/Header";
 import "../styles/globals.css";
 import { RecoilRoot } from "recoil";
-
+import { Modal } from "../components/items/Modal";
 const styles = {
   layout: {
     display: "flex",
@@ -30,6 +30,7 @@ export default class RootApp extends App {
       <>
         <RecoilRoot>
           <Header></Header>
+          <Modal></Modal>
           <Component {...other} />
         </RecoilRoot>
       </>

@@ -5,23 +5,22 @@ import { DetailList } from "../../components/DetailList";
 import { BtnItem } from "../../components/items/BtnItem";
 import { detailData } from "../../util/postman";
 import { useRecoilState } from "recoil";
-import { countAtom } from "../../components/Header";
+import { displayAtom } from "../../components/items/Modal";
 
-const detail = ({pageProps}) => {
-  const [count, setCount]=useRecoilState(countAtom);
-  const increaseCount=()=>{
-    setCount(count+1);
-  }
-  const {id}= pageProps;
+const detail = ({ pageProps }) => {
+  const [displayFlag, setDisplayFlag] = useRecoilState(displayAtom);
+  const showModal = () => {
+    setDisplayFlag(true);
+  };
 
+  const { id } = pageProps;
   const [data, setData] = useState([]);
   useEffect(() => {
-    increaseCount();
+    // increaseCount();
     let tempRender;
     const temp = async () => {
       // setData([1]);
       tempRender = await detailData(id);
-
       setData(tempRender.data.detail);
     };
     temp();
@@ -29,15 +28,14 @@ const detail = ({pageProps}) => {
   return (
     <BodyWrapper>
       <CenterWrapper>
-        <DetailWrapper>
-          <DetailList detailData={data} />
-          <BtnItem BtnName={"수정하기"} />
-        </DetailWrapper>
+          <DetailWrapper>
+            <DetailList detailData={data} />
+            <BtnItem isPwd={false} BtnName={"수정하기"} id={id}/>
+          </DetailWrapper>
       </CenterWrapper>
     </BodyWrapper>
   );
 };
-
 detail.getInitialProps = (context) => {
   //SSR
   const { id } = context.query;

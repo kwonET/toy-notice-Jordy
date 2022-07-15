@@ -22,9 +22,11 @@ const wrtData = async (data) => {
 };
 const pwdCheck = async (id, pwd) => {
   const res = await axios.patch(
-    `http://124.197.210.234:8188/bulletin/${id}/${pwd}`,
-    
+    `http://124.197.210.234:8188/bulletin/${id}`,
+    {
+      password:pwd,
+    }
   );
   return res;
 };
-export { postData, detailData, wrtData };
+export { postData, detailData, wrtData, pwdCheck };

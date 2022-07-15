@@ -1,15 +1,15 @@
 import { Router, useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
 export const PostItm = ({ id,thumb, title, content, regDate }) => {
   const [dateVisible, setDateVisible] = useState(null); // 실제로 보이게 될 가공된 날짜 문자열
-  const router = useRouter();
+  const {push} = useRouter();
 
-  const onClickMoveTo=(id)=> {
-    router.push(`/board/detail?id=${id}`);
-  }
+  const onClickMoveTo=useCallback((id)=> {
+    push(`/board/detail?id=${id}`);
+  },[]);
 
   useEffect(() => {
     // regDate -> dateVisible로 보여주고싶은 형태로 날짜를 가공

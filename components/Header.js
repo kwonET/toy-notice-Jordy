@@ -1,17 +1,17 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Modal from "../components/items/Modal"
-import { atom, useRecoilState } from "recoil";
-export const countAtom=atom({
-  key:'countState',
-  default:0,
-});
+// import { atom, useRecoilState } from "recoil";
+// export const countAtom=atom({
+//   key:'countState',
+//   default:0,
+// });
 
 export const Header = () => {
-  const [count, setCount]=useRecoilState(countAtom);
-  const increaseCount=()=>{
-    setCount(count+1);
-  }
+  // const [count, setCount]=useRecoilState(countAtom);
+  // const increaseCount=()=>{
+  //   setCount(count+1);
+  // }
 
   //모바일 토글바 설정
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -28,17 +28,17 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <CenterWrapper>
-        {count}
+        {/* {count} */}
         <ThreeBar onClick={toggleChange}>
           <Bar></Bar>
           <Bar></Bar>
           <Bar></Bar>
         </ThreeBar>
       </CenterWrapper>
-
+{/* 
       {toggleMenu && (
         <Modal></Modal>
-      )}
+      )} */}
 
     </HeaderWrapper>
   );
