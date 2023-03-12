@@ -1,3 +1,11 @@
+
+## 죠르디 블로그
+- 게시글(제목, 내용, 카테고리, 썸네일) 포스팅, 수정, 삭제의 기능을 담고 있습니다.
+- 페이지네이션 기능을 담고 있습니다.
+- 카테고리에 따라 게시글을 분류해서 볼 수 있습니다.
+https://user-images.githubusercontent.com/49463954/224538183-48809a62-3f58-4eea-8f19-a35f179f9db6.png
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
